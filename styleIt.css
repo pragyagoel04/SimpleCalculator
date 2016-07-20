@@ -1,0 +1,30 @@
+body{
+    background-image: url("bg.jpg");
+    background-attachment: fixed;
+    font-size: 2em;
+}
+
+#output, .button, .bigbutton{
+
+    border: 2px solid black;
+    width: 100px;
+    display: inline-block;
+    text-align: center;
+    margin: 3px;
+}
+
+#output{
+    width: 315px;
+    text-align: right;
+    padding: 12px;
+}
+
+.bigbutton{
+    width: 220px;
+}
+
+#del{
+    width: 77px;
+    padding: 12px;
+
+}
