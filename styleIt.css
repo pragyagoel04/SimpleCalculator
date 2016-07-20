@@ -28,3 +28,7 @@ body{
     padding: 12px;
 
 }
+
+.bigbutton:hover, .button.hover{
+    color: pink;
+}
