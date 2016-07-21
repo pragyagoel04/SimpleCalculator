@@ -1,10 +1,9 @@
 //global variables
-var input=["","",""];
-var value=[];
-var result=document.getElementById("output");
-
+var a=0;
+var b=0;
+var i=0;
 //arithmatic functions
-
+"pragya"
 var add=function(a,b){
     return a + b;
 }
@@ -50,13 +49,30 @@ var equals=function(){
     display();
 }
 
+var press_button = function(current_button){
+  if (a.length != 0 && i == 0) {
+    clear();
+    display(current_button);
+    i++;
+  } else {
+    i++;
+    display(current_button);
+  }
+}
+
+var get_number=function{
+    if(a==0)
+        a=document.getElementById("screen").innerHTML;
+    else{
+        b=document.getElementById("screen").innerHTML;
+    }
+}
+
 
 //display functions
 
 val clear=function(){
-    input=["", "", ""];
-    value=[];
-    display();
+    document.getElementById("screen").innerHTML="";
 }
 
 var update=function(value){
@@ -66,7 +82,16 @@ var update=function(value){
 }
 
 
-var display=function(){
+var display=function(number){
+    var displayNum=document.getElementById("screen");
+    if(i==1){
+        displayNum.innerHTML="";
+        displayNum.innerHTML=displayNum.innerHTML + number;
+    } 
+    else{
+
+    }
+}
     //innerHtml changes the value present in result to new value
     result.innerHTML=input.join(" ") + " " + value.join("");
 }
