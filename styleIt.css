@@ -4,7 +4,7 @@ body{
     font-size: 2em;
 }
 
-#output, .button, .bigbutton{
+#numpad, .button, .bigbutton,{
 
     border: 2px solid black;
     width: 100px;
@@ -29,6 +29,6 @@ body{
 
 }
 
-.bigbutton:hover, .button.hover{
-    color: pink;
+.bigbutton:hover, .button:hover{
+    background-color: #7D0552;
 }
