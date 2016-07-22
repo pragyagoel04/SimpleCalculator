@@ -1,28 +1,29 @@
 //global variables
-var a=0;
-var b=0;
-var i=0;
-var next_operator='';
+var a = 0,
+b = 0,
+i = 0,
+next_operator = '';
+
 //arithmatic functions
 var add=function(a,b){
-    return (a + b);
+    return (+a + +b);
 };
 
-var sub=function(a,b){
-    return (a - b);
+var subtract=function(a,b){
+    return (+a - +b);
 };
 
-var mul=function(a,b){
-    return (a * b);
+var multiply=function(a,b){
+    return (+a * +b);
 };
 
-var div=function(a,b){
-    return (a / b);
+var divide=function(a,b){
+    return (+a / +b);
 };
 
 var press_button = function(current_button){
   if (a.length != 0 && i == 0) {
-    clear();
+    clear_display();
     display(current_button);
     i++;
   } else {
@@ -31,9 +32,39 @@ var press_button = function(current_button){
   }
 };
 
+var display=function(number){
+    var displayNum=document.getElementById("screen");
+    if(i===1){
+        displayNum.innerHTML="";
+        displayNum.innerHTML=displayNum.innerHTML + number;
+    } 
+    else if(i > 10) {
+        document.getElementById("screen").style.display = "none";
+        setTimeout(function(){ 
+        document.getElementById("screen").style.display = "block";
+        }, 100);
+        document.getElementById("screen").innerHTML = "Too long";
+    }
+    else{
+        displayNum.innerHTML=displayNum.innerHTML + number;
+    }
+};
+
+val clear_display = function(){
+    document.getElementById("screen").innerHTML = "";
+};
+
+
+var reset = function(){
+    document.getElementById("screen").innerHTML = "";
+    a = 0;
+    b = 0;
+    i = 0;
+    next_operator = 0;    
+};
 
 var get_number=function(){
-    if(a==0){
+    if(a===0){
         a=document.getElementById("screen").innerHTML;
     }
     else{
@@ -41,44 +72,23 @@ var get_number=function(){
     }
 };
 
-
-//display functions
-
-
-var reset=function(){
-    document.getElementById("screen").innerHTML="";
-    a=0;
-    b=0;
-    i=0;
-    next_operator=0;    
-};
-
-val clear=function(){
-    document.getElementById("screen").innerHTML="";
-};
-
-var update=function(value){
-    input.push(value);
-    //shift() removes first element of the array;
-    input.shift();
-};
-
-
-var display=function(number){
-    var displayNum=document.getElementById("screen");
-    if(i==1){
-        displayNum.innerHTML="";
-        displayNum.innerHTML=displayNum.innerHTML + number;
-    } 
-    else if(i > 10) {
-        document.getElementById("screen").style.display = "none";
-        setTimeout(function(){ document.getElementById("screen").style.display = "block";}, 100)
-        document.getElementById("screen").innerHTML = "Too long";
-    }
-    else{
-        displayNum.innerHTML=displayNum.innerHTML + number;
-    }
-
+var operator = function(sign) {
+  if (sign === "equals") {
+    get_result();
+    a = 0;
+    b = 0;
+    i = 0;
+  } 
+  else if (sign === "negate") {
+    var num = document.getElementById("screen").innerHTML;
+    document.getElementById("screen").innerHTML = +num * -1;
+  } 
+  else {
+    next_operator = sign;
+    get_number();
+    calculate_step();
+    i = 0;
+  }
 };
 
 var get_result = function() {
@@ -110,24 +120,6 @@ var calculate_step = function() {
     get_result();
     a = document.getElementById("screen").innerHTML;
     b = 0;
-    i = 0;
-  }
-};
-
-
-var operator = function(sign) {
-  if (sign === "equals") {
-    get_result();
-    a = 0
-    b = 0;
-    i = 0;
-  } else if (sign === "negate") {
-    var num = document.getElementById("screen").innerHTML;
-    document.getElementById("screen").innerHTML = +num * -1;
-  } else {
-    next_operator = sign;
-    get_number();
-    calculate_step();
     i = 0;
   }
 };
