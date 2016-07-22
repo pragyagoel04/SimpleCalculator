@@ -50,7 +50,7 @@ var display=function(number){
     }
 };
 
-val clear_display = function(){
+var clear_display = function(){
     document.getElementById("screen").innerHTML = "";
 };
 
